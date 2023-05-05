@@ -1,8 +1,8 @@
 """Classes for melon orders."""
-
+from random import choice
 
 class AbstractMelonOrder:
-
+    # price_log = []
 
     def __init__(self, species, qty):
         """Initialize melon order attributes."""
@@ -10,11 +10,30 @@ class AbstractMelonOrder:
         self.species = species
         self.qty = qty
         self.shipped = False
+        #self.price_log = []
+        
+    def get_based_price(self):
+        
+        #if list is full, reset
+        # while True:
+        splurge_price = choice(range(5, 10))
+            # print (splurge_price)
+            # if splurge_price not in price_log:
+            #     price_log.append(splurge_price)
+            #     print (price_log)
+            #     break
+            # else:
+            #     continue
+
+        return splurge_price 
+
+
 
     def get_total(self):
         """Calculate price, including tax."""
 
-        base_price = 5 
+        base_price = self.get_based_price()
+        print(base_price)
         total = (1 + self.tax) * self.qty * base_price
 
         return total
